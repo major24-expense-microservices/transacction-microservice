@@ -15,31 +15,15 @@ namespace transaction_api.Controllers
     public class TransactionsController : ControllerBase
     {
         private readonly ITransactionRepository _transactionRepository;
-        // private readonly IUserRepository _userRepository;
 
         public TransactionsController(ITransactionRepository transactionRepository)
         {
             _transactionRepository = transactionRepository;
-            // _userRepository = userRepository;
-        }
-
-        // GET: api/Transactions
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Transactions/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
         }
 
         // POST: api/Transactions
         [HttpPost]
-        public async Task<ActionResult<Result>> Post([FromBody] TransactionDto transactionDto)  //Transaction[] transactions)
+        public async Task<ActionResult<Result>> Post([FromBody] TransactionDto transactionDto)
         {
             Result<bool> result = ValidateUser(transactionDto.User);
             if (!result.Entity)
@@ -78,7 +62,6 @@ namespace transaction_api.Controllers
             {
                 Result resultErr = new Result() { Error = $"Error creating transactions. {ex.Message}" };
                 return resultErr;
-                // throw new Exception("Error creating user. " + ex.Message);
             }
         }
 

@@ -37,7 +37,6 @@ namespace transaction_api.Controllers
                     response.Entity = "Transaction(s) have been saved successfully";
                     response.IsSuccess = true;
                     return response;
-                    // return Created("", "Transaction(s) have been saved successfully");
                 }
                 else
                 {
@@ -48,8 +47,6 @@ namespace transaction_api.Controllers
             {
                 response.Error = $"Error creating transactions. {ex.Message}";
                 return response;
-/*                resultErr.AddError($"Error creating transactions. {ex.Message}");
-                return resultErr;*/
             }
         }
 
